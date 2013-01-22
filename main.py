@@ -23,7 +23,7 @@ from google.appengine.ext import db
 jinja_environment = jinja2.Environment(autoescape = True,
                                         loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'Templates')))
 
-class Recipie(db.model)
+class Recipie(db.Model):
     #The title of the recipie and the style of the beer
     title = db.StringProperty(required = True)
     style = db.StringProperty(required = True)
@@ -36,7 +36,7 @@ class Recipie(db.model)
     #hopboiltime is an integer that specifies at which point in the boil the hops should be added
     hoptype = db.ListProperty(str, required = True)
     hopamnt = db.ListProperty(float, required = True)
-    hopboiltime = db.ListProperty(int required = True)
+    hopboiltime = db.ListProperty(int, required = True)
     #Lists the type of extra fermentable ingredients used, with the amount of each in (Unit?!)
     #in the corresponding list position (Consider checking to see if both lists are of equal length)
     xtrafermentables = db.ListProperty(str)
