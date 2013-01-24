@@ -1,0 +1,3 @@
+-Until I figure out the datastore, set up just a cheaty little dictionary to build everything else around
+
+-Have a list of beer styles (eventually based on what is in the database) Have cute icons instead of a dropdown menu to select a style. a variable in Python is then set to that style and the appropriate recipes are called up and displayed as options somehow!

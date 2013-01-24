@@ -20,8 +20,19 @@ import jinja2
 
 from google.appengine.ext import db
 
+'''
+This assigns the Jinja environment object to the variable jinja_environment. It is later used in the main handler to render the page, using the method
+(Do Python objects have methods?!) .get_template, which calls on 'main.html', which is located in the path specified when jinja_environment was set. 
+So when I am setting up the other pages on the site, I will be making new handlers for those pages. I guess I don't want to use the same template for
+all of those, unless I can figure out the "extends" syntax (Child Templates). Which I can!
+
+Anyway,
+'''
+
 jinja_environment = jinja2.Environment(autoescape = True,
                                         loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'Templates')))
+
+
 
 class Recipie(db.Model):
     #The title of the recipie and the style of the beer
@@ -55,7 +66,7 @@ class Recipie(db.Model):
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-    	template = jinja_environment.get_template('main.html')
+    	template = jinja_environment.get_template('home.html')
         self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
