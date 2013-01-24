@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  {% block head %}
+    <title>{% block title %}{% endblock %} - LupBrew</title>
+    <link type="text/css" rel="stylesheet" href="/static/stylesheet.css" />
+  {% endblock %}
+  </head>
+
+  <body>
+  <div id="top">	
+    <div id="header">
+    	Lupbrew Beer Recipie Generator
+    </div>
+
+    <div id="navbar">
+    	<span class=nav>Generator</span><span class=nav>Submit a Recipie</span><span class=nav>About</span><span class=nav>Dope Links</span>
+    </div>
+  </div>
+
+  <div id="content">
+        
+    {% block content %}{% endblock %}  
+
+  </div>
+
+  </body>
+
+</html>
