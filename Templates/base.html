@@ -15,16 +15,19 @@
     </div>
 
     <div id="navbar">
-    	<span class=nav>Generator</span><span class=nav>Submit a Recipie</span><span class=nav>About</span><span class=nav>Dope Links</span>
+    	<span class=nav><a href="/">Generator</a></span>
+      <span class=nav><a href="submit.html">Submit a Recipie</a></span>
+      <span class=nav><a href="about.html">About</a></span>
+      <span class=nav><a href="links.html">Dope Links</a></span>
     </div>
   </div>
-
-  <div id="content">
+  <div id="mainbody">
+    <div id="content">
         
-    {% block content %}{% endblock %}  
+      {% block content %}{% endblock %}  
 
+    </div>
   </div>
-
   </body>
 
 </html>

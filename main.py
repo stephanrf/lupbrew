@@ -20,14 +20,6 @@ import jinja2
 
 from google.appengine.ext import db
 
-'''
-This assigns the Jinja environment object to the variable jinja_environment. It is later used in the main handler to render the page, using the method
-(Do Python objects have methods?!) .get_template, which calls on 'main.html', which is located in the path specified when jinja_environment was set. 
-So when I am setting up the other pages on the site, I will be making new handlers for those pages. I guess I don't want to use the same template for
-all of those, unless I can figure out the "extends" syntax (Child Templates). Which I can!
-
-Anyway,
-'''
 
 jinja_environment = jinja2.Environment(autoescape = True,
                                         loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(__file__), 'Templates')))
@@ -64,11 +56,33 @@ class Recipie(db.Model):
     def render(self):
         pass
 
+#These guys are what make the pages render when you click on the links! Since each page will have different shit that happens on them, I can't just
+#make a generic page handler, even though they all do the same thing right now. Though maybe I could tidy up a couple of these functions later
+#when I know what they're all doing!!!
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
     	template = jinja_environment.get_template('home.html')
         self.response.write(template.render())
 
+class SubmitHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('submit.html')
+        self.response.write(template.render())
+
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('about.html')
+        self.response.write(template.render())
+
+class LinksHandler(webapp2.RequestHandler):
+    def get(self):
+        template = jinja_environment.get_template('links.html')
+        self.response.write(template.render())
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/submit.html', SubmitHandler),
+    ('/about.html', AboutHandler),
+    ('/links.html', LinksHandler)
 ], debug=True)
